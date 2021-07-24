@@ -21,10 +21,11 @@ let urlArray = [];
 
 // Your first API endpoint
 app.post('/api/shorturl', function(req, res) {
-  let url = req.body.url
+  let url = req.body.url;
   console.log(url);
-  console.log(dns.lookup(url));
-  console.log(dns.lookup('ciao'));
+  dns.lookup(url, err => {
+    if(err.errno === 'EAI_AGAIN') res.send({error: "Invalid url"})
+  });
 });
 
 app.get('/api/shorturl/:number', (req, res) => {
