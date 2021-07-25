@@ -24,7 +24,7 @@ app.post('/api/shorturl', function(req, res) {
   let url = req.body.url;
   console.log(url);
   dns.lookup(url, err => {
-    if(err.errno === 'EAI_AGAIN') res.send({error: "Invalid url"})
+    if(err) res.send({error: "Invalid url"})
   });
 });
 
