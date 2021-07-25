@@ -29,6 +29,8 @@ const shortUrl = new mongoose.Schema({
 
 let ShortModel = new mongoose.model("ShortModel" ,shortUrl);
 
+let lastIndex = 1;
+
 // Your first API endpoint
 app.post('/api/shorturl', function(req, res) {
   let url = req.body.url;
